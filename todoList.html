@@ -5,15 +5,12 @@
     <title>Practical JavaScript</title>
   </head>
   <body>
-    <button id = 'display-todos-button'>Display todos </button>
     <button id = 'toggle-all-button'>Toggle All</button>
     <button id = 'add-button'>Add</button>
     <input id = 'add-input'>
     <button id = 'edit-button'>Edit</button>
     <input id = 'edit-position-input'>
     <input id = 'edit-text-input'>
-    <button id = 'remove-button'>Remove</button>
-    <input id = 'remove-input'>
     <button id = 'toggle-button'>Toggle</button>
     <input id = 'toggle-input'>
 
@@ -48,10 +45,9 @@
         displayTodos();
         }
 
-      function remove(){
-        var position = removeInput.value;
+      function remove(event){
+        var position = event.target.id;
         todos.splice(position, 1);
-        removeInput.value = '';
         displayTodos();
       }
 
@@ -80,6 +76,14 @@
           }else {
             todoLi.innerText = '[ ] ' + todos[i].todoText;
           }
+
+          var removeButton = document.createElement('button');
+          removeButton.innerText = 'Remove';
+          removeButton.addEventListener('click', remove);
+          removeButton.id = i;
+
+          todoLi.appendChild(removeButton);
+
           todosUl.appendChild(todoLi);
         }
       }
@@ -108,9 +112,6 @@
         displayTodos();
       }
 
-      var displayTodosButton = document.getElementById('display-todos-button');
-      displayTodosButton.addEventListener('click', displayTodos);
-
       var toggleAllButton = document.getElementById('toggle-all-button');
       toggleAllButton.addEventListener('click', toggleAll);
 
@@ -122,10 +123,6 @@
       var editPositionInput = document.getElementById('edit-position-input');
       var editTextInput = document.getElementById('edit-text-input');
       editButton.addEventListener('click', edit);
-
-      var removeButton = document.getElementById('remove-button');
-      var removeInput = document.getElementById('remove-input');
-      removeButton.addEventListener('click', remove);
 
       var toggleButton = document.getElementById('toggle-button');
       var toggleInput = document.getElementById('toggle-input');
