@@ -1,3 +1,8 @@
+Version 9
+[x] There should be an li for each todo.
+[x] Each Li should show the todoText property.
+[x] Each Li should show the completed property.
+
 Version 8
 [x] There should be a working button for adding a todo.
 [x] There should be a working button for editing a todo.
